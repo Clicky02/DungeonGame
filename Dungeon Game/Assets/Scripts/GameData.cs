@@ -11,6 +11,7 @@ public class GameData : MonoBehaviour
 
     public int level;
     public int experience;
+    public int gold;
 
     public float baseHealth;
     public float baseMana;
@@ -53,11 +54,12 @@ public class GameData : MonoBehaviour
         {
             level = level,
             experience = experience,
+            gold = gold,
 
             baseHealth = baseHealth,
             baseMana = baseMana,
 
-             helmet = helmet,
+            helmet = helmet,
             chestplate = chestplate,
             boots = boots,
             weapon = weapon,
@@ -90,6 +92,7 @@ public class GameData : MonoBehaviour
             file.Close();
             level = data.level;
             experience = data.experience;
+            gold = data.gold;
 
             classType = data.classType;
 
@@ -117,6 +120,7 @@ public class GameData : MonoBehaviour
     {
         level = 1;
         experience = 0;
+        gold = 100;
         baseHealth = 15;
         baseMana = 20;
         classType = "Wizard";
@@ -160,6 +164,7 @@ class PlayerData
 {
     public int level;
     public int experience;
+    public int gold;
 
     public float baseHealth;
     public float baseMana;
