@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,30 +29,43 @@ public class Player : HealthEntity
 
     public override void Start()
     {
-        //Health Bar
-        hBR = healthBar.GetComponent<RectTransform>();
-        hBRMaxWidth = hBR.sizeDelta.x;
-
-        //Mana Bar
-        mBR = manaBar.GetComponent<RectTransform>();
-        mBRMaxWidth = mBR.sizeDelta.x;
-
         PullStats();
+        
+        if (LevelData.data.p  == null) {
+            mana = maxMana;
+            health = maxHealth;  
+        } else {
+            mana = LevelData.data.p.mana;
+            health = LevelData.data.p.health; 
+        }
+        LevelData.data.p = this;
+            
+        Connect();
+    }
+    
+    //Things required to connect this class with outside classes
+    public void Connect() {
+            //Health Bar
+            hBR = healthBar.GetComponent<RectTransform>();
+            hBRMaxWidth = hBR.sizeDelta.x;
+            hBR.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, hBRMaxWidth * (float)(health / maxHealth));
 
-        mana = maxMana;
-        health = maxHealth;
+            //Mana Bar
+            mBR = manaBar.GetComponent<RectTransform>();
+            mBRMaxWidth = mBR.sizeDelta.x;
+            mBR.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, mBRMaxWidth * (float)(mana / maxMana));
 
-        sr = GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>();
+            sr = GetComponent<SpriteRenderer>();
+            anim = GetComponent<Animator>();
 
-        leftAnimationHash = Animator.StringToHash("WizardLeft");
-        rightAnimationHash = Animator.StringToHash("WizardRight");
-        upAnimationHash = Animator.StringToHash("WizardBack");
-        downAnimationHash = Animator.StringToHash("WizardFront");
+            leftAnimationHash = Animator.StringToHash("WizardLeft");
+            rightAnimationHash = Animator.StringToHash("WizardRight");
+            upAnimationHash = Animator.StringToHash("WizardBack");
+            downAnimationHash = Animator.StringToHash("WizardFront");
 
-        baseColor = GetComponent<SpriteRenderer>().color;
+            baseColor = GetComponent<SpriteRenderer>().color;
 
-        LoadAbilities();
+            LoadAbilities();
     }
 
     public void OnDisable()
