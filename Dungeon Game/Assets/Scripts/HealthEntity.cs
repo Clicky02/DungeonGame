@@ -143,9 +143,9 @@ public class HealthEntity : Entity
 
     public virtual void Kill()
     {
-        if (c.IsTile(tilePos))
+        if (Control.c.IsTile(tilePos))
         {
-            c.RemoveEntity(tilePos);
+            Control.c.RemoveEntity(tilePos);
         }
         Destroy(this.gameObject);
     }

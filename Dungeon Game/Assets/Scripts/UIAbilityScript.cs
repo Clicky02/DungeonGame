@@ -7,18 +7,17 @@ public class UIAbilityScript : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 {
     public int ability = 1;
     public Player p;
-    public Control c;
 
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        c.abilityActive = true;
+        Control.c.abilityActive = true;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        c.abilityActive = false;
+        Control.c.abilityActive = false;
         if (GetComponent<Button>().interactable)
-            c.nextAbility = ability;
+            Control.c.nextAbility = ability;
     }
 }

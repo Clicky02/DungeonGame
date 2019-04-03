@@ -27,7 +27,6 @@ public abstract class Ability
         abilityButton.transform.GetChild(0).GetComponent<Image>().sprite = image;
         UIAbilityScript script = abilityButton.GetComponent<UIAbilityScript>();
         script.ability = number;
-        script.c = p.c;
         script.p = p;
         abilityNumber = number;
     }

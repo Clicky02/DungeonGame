@@ -22,7 +22,6 @@ public class LevelData : MonoBehaviour
         {
             data = this;
             DontDestroyOnLoad(gameObject);
-            Load();
         }
         else if (data != this)
         {

@@ -30,13 +30,16 @@ public class Player : HealthEntity
     public override void Start()
     {
         PullStats();
-        
+        DontDestroyOnLoad(gameObject);
         if (LevelData.data.p  == null) {
+            Debug.Log(1); 
             mana = maxMana;
             health = maxHealth;  
         } else {
+            Debug.Log(2);
             mana = LevelData.data.p.mana;
-            health = LevelData.data.p.health; 
+            health = LevelData.data.p.health;
+            Destroy(LevelData.data.p.gameObject);
         }
         LevelData.data.p = this;
             

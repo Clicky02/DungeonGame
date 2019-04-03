@@ -33,7 +33,7 @@ public class Fireball : Ability
             Projectile f = GameObject.Instantiate(fireball).GetComponent<Projectile>();
             f.tilePos = new Vector3Int(p.tilePos.x, p.tilePos.y, 0);
             f.caster = p;
-            f.c = p.c;
+            f.c = Control.c;
             f.direction = p.direction;
             f.crit = crit;
             f.damage = damage;
@@ -78,7 +78,7 @@ public class MagicBolt : Ability
             f.tilePos = new Vector3Int(p.tilePos.x, p.tilePos.y, 0);
             f.range = 3;
             f.caster = p;
-            f.c = p.c;
+            f.c = Control.c;
             f.direction = p.direction;
             f.crit = crit;
             f.damage = damage;

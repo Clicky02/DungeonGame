@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 1
-  lastUpdatedAtString: 2019-04-01T22:22:13.888-04:00
-  initializedAtString: 2019-04-01T22:19:23.703-04:00
+  lastUpdatedAtString: 2019-04-01T22:34:48.050-04:00
+  initializedAtString: 2019-04-01T22:34:47.442-04:00
   currentGitRemote:
     name: origin
-    url: https://github.com/OrangeDrangon/grades-frontend.git
+    url: https://github.com/Clicky02/DungeonGame.git
     login: 
     user: 
     host: 
@@ -25,14 +25,14 @@ MonoBehaviour:
     token: 
   currentGitBranch:
     name: master
-    tracking: 
+    tracking: origin/master
   currentConfigBranch:
     name: master
     remote:
-      name: 
-      url: 
-    trackingBranch: 
+      name: origin
+      url: https://github.com/Clicky02/DungeonGame.git
+    trackingBranch: master
   currentConfigRemote:
     name: origin
-    url: https://github.com/OrangeDrangon/grades-frontend.git
+    url: https://github.com/Clicky02/DungeonGame.git
   currentHead: 

@@ -13,28 +13,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 2
-  lastUpdatedAtString: 2019-04-01T22:20:50.544-04:00
-  initializedAtString: 2019-04-01T22:20:50.526-04:00
-  localBranches: []
-  remoteBranches: []
+  lastUpdatedAtString: 2019-04-01T22:34:48.082-04:00
+  initializedAtString: 2019-04-01T22:34:48.065-04:00
+  localBranches:
+  - name: master
+    tracking: origin/master
+  remoteBranches:
+  - name: origin/HEAD
+    tracking: '[None]'
+  - name: origin/master
+    tracking: '[None]'
   remotes:
   - name: origin
-    url: https://github.com/OrangeDrangon/grades-frontend.git
+    url: https://github.com/Clicky02/DungeonGame.git
     login: 
     user: 
     host: 
     function: 0
     token: 
   localConfigBranches:
-    keys: []
-    values: []
+    keys:
+    - master
+    values:
+    - name: master
+      remote:
+        name: origin
+        url: https://github.com/Clicky02/DungeonGame.git
+      trackingBranch: master
   remoteConfigBranches:
-    keys: []
-    subKeys: []
-    subKeyValues: []
+    keys:
+    - origin
+    subKeys:
+    - Values:
+      - HEAD
+      - master
+    subKeyValues:
+    - Values:
+      - name: HEAD
+        remote:
+          name: origin
+          url: https://github.com/Clicky02/DungeonGame.git
+        trackingBranch: 
+      - name: master
+        remote:
+          name: origin
+          url: https://github.com/Clicky02/DungeonGame.git
+        trackingBranch: 
   configRemotes:
     keys:
     - origin
     values:
     - name: origin
-      url: https://github.com/OrangeDrangon/grades-frontend.git
+      url: https://github.com/Clicky02/DungeonGame.git
