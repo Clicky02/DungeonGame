@@ -29,7 +29,7 @@ public class Projectile : Entity
         sr = GetComponent<SpriteRenderer>();
         transform.position = new Vector3(tilePos.x, tilePos.y, tilePos.y + 0.1f);
         transform.rotation = Quaternion.Euler(0,0,Vector3.SignedAngle(Vector3.up, direction, Vector3.forward));
-        movement = new Movement(Vector3.up, speed, 0.5f, this);
+        movement = new Movement(Vector3.up, speed, (float)range, this);
         x = (int)direction.normalized.x;
         y = (int)direction.normalized.y;
         c.AddProjectile(tilePos, this);
@@ -44,55 +44,29 @@ public class Projectile : Entity
 
             if (movement.Tick2(Time.deltaTime))
             {
-                if (phase == 0)
-                {
-
-                    phase = 1;
-
-                    Vector3Int newTilePos = new Vector3Int(tilePos.x + x, tilePos.y + y, 0);
-                    if (c.layerTwo.GetTile(newTilePos) != null)
-                    {
-                        c.RemoveProjectile(tilePos, this);
-                        Destroy(this.gameObject);
-                    }
-                    else
-                    {
-                        distanceTraveled += 1;
-                        c.RemoveProjectile(tilePos, this);
-                        tilePos = newTilePos;
-                        c.AddProjectile(tilePos, this);
-                        movement = new Movement(Vector3.up, speed, 0.5f, this);
-
-                    }
-                }
-                else if (phase == 1)
-                {
-                    phase = 0;
-
-                    Entity e = c.GetEntity(tilePos);
-                    if (c.IsTile(tilePos) && e != null && e != caster)
-                    {
-                        if (e is HealthEntity)
-                        {
-                            new DamageEvent(e as HealthEntity, caster, damage, "projectile", crit).Invoke();
-                        }
-                        Destroy(this.gameObject);
-                    }
-                    else
-                    {
-                        movement = new Movement(Vector3.up, speed, 0.5f, this);
-                    }
-
-                    if (!(distanceTraveled < range))
-                    {
-                        Destroy(this.gameObject);
-                    }
-                }
  
-                
+                Destroy(this.gameObject);   
                 
             }
         }
 
     }
+    
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        Entity e = collision.gameObject.GetComponent(typeof(Entity))
+        if (e != null)
+        {
+            if (e is HealthEntity)
+            {
+                new DamageEvent(e as HealthEntity, caster, damage, "projectile", crit).Invoke();
+                Destroy(this.gameObject);
+            }
+            else if (e is Projectile)
+            {
+                Destroy(this.gameObject);
+            }
+            
+        }
+    }   
 }
