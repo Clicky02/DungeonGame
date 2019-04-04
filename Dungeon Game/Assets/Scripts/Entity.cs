@@ -11,6 +11,8 @@ public abstract class Entity : MonoBehaviour
     public Rigidbody2D rb;
 
     protected SpriteRenderer sr;
+    
+    public int team = 0;
 
     public Animator anim { get; set; }
     public int leftAnimationHash { get; set; }
