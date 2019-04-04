@@ -61,6 +61,8 @@ public class Player : HealthEntity
             sr = GetComponent<SpriteRenderer>();
             anim = GetComponent<Animator>();
 
+            rb = GetComponent<Rigidbody2D>();
+
             leftAnimationHash = Animator.StringToHash("WizardLeft");
             rightAnimationHash = Animator.StringToHash("WizardRight");
             upAnimationHash = Animator.StringToHash("WizardBack");
@@ -208,5 +210,9 @@ public class Player : HealthEntity
         buttons[num].interactable = true;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("h3");
+    }
 
 }

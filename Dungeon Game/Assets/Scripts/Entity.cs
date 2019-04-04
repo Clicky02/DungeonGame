@@ -8,6 +8,8 @@ public abstract class Entity : MonoBehaviour
     public Control c;
     public Vector3Int tilePos = new Vector3Int(0, 0, 0);
 
+    public Rigidbody2D rb;
+
     protected SpriteRenderer sr;
 
     public Animator anim { get; set; }

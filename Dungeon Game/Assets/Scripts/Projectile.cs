@@ -27,12 +27,13 @@ public class Projectile : Entity
     public override void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        transform.position = new Vector3(tilePos.x, tilePos.y, tilePos.y + 0.1f);
+        transform.position = new Vector3(tilePos.x, tilePos.y-0.3f, tilePos.y + 0.1f);
         transform.rotation = Quaternion.Euler(0,0,Vector3.SignedAngle(Vector3.up, direction, Vector3.forward));
-        movement = new Movement(Vector3.up, speed, (float)range, this);
+        movement = new Movement(Vector3.up, speed*2*range, (float)range, this);
         x = (int)direction.normalized.x;
         y = (int)direction.normalized.y;
         c.AddProjectile(tilePos, this);
+        rb = GetComponent<Rigidbody2D>();
         baseColor = sr.color;
     }
 
@@ -51,13 +52,13 @@ public class Projectile : Entity
         }
 
     }
-    
-    public void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Entity e = collision.gameObject.GetComponent(typeof(Entity))
+        Entity e = collision.gameObject.GetComponent(typeof(Entity)) as Entity;
         if (e != null)
         {
-            if (e is HealthEntity)
+            if (e is HealthEntity && e != caster)
             {
                 new DamageEvent(e as HealthEntity, caster, damage, "projectile", crit).Invoke();
                 Destroy(this.gameObject);
@@ -66,7 +67,11 @@ public class Projectile : Entity
             {
                 Destroy(this.gameObject);
             }
-            
+
         }
-    }   
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 7135470200235910063}
   - component: {fileID: 7135470200235910062}
   - component: {fileID: 2260933117769214656}
+  - component: {fileID: 7347188277023184275}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -179,6 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   c: {fileID: 0}
   tilePos: {x: 0, y: -1, z: 0}
+  rb: {fileID: 0}
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   mana: 20
   manaRegen: 1
@@ -244,3 +246,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
+--- !u!50 &7347188277023184275
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135470200235910061}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -52,8 +52,10 @@ public class Movement : StateChange
         {
             amountMoved = currentMovementLeft;
         }
+        //e.rb.MovePosition(e.transform.position + (currentDir.normalized * amountMoved));
         e.transform.Translate(currentDir.normalized * amountMoved);
         currentMovementLeft -= amountMoved;
+
         e.transform.position = new Vector3(e.transform.position.x, e.transform.position.y, e.transform.position.y);
         if (currentMovementLeft <= 0)
         {
