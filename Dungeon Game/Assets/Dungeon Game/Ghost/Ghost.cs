@@ -52,7 +52,24 @@ public class Ghost : HealthEntity
             }
         }
         
-        
+        switch (Mathf.Floor(Random.value * 4))
+        {
+            case 0:
+                Move(Vector3.up);
+                break;
+            case 1:
+                Move(Vector3.down);
+                break;
+            case 2:
+                Move(Vector3.right);
+                break;
+            case 3:
+                Move(Vector3.left);
+                break;
+            default:
+                Move(Vector3.down);
+                break;
+        }
 
     }
 }
