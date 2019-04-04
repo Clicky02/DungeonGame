@@ -29,6 +29,7 @@ public class Player : HealthEntity
 
     public override void Start()
     {
+        team = -1;
         PullStats();
         DontDestroyOnLoad(gameObject);
         if (LevelData.data.p  == null) {
