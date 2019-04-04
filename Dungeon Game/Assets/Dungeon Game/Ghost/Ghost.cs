@@ -7,6 +7,9 @@ public class Ghost : HealthEntity
 
     Random r = new Random();
     public int sightRange = 5;
+    public int followRange = 7;
+    
+    public HealthEntity previousTarget = null;
 
     // Start is called before the first frame update
     public override void Start()
@@ -36,11 +39,11 @@ public class Ghost : HealthEntity
             {
                 int distX = h.tilePos.x - tilePos.x;
                 int distY = h.tilePos.y - tilePos.y;
-                if (Mathf.Abs(distX) <= sightRange && Mathf.Abs(distY) <= sightRange)
+                if ((Mathf.Abs(distX) <= sightRange && Mathf.Abs(distY) <= sightRange) ||  (h == previousTarget && (Mathf.Abs(distX) <= followRange && Mathf.Abs(distY) <= followRange)))
                 {
                     eX = distX*direction.x + distY*direction.y;
                     eY = distY*direction.x + distX*direction.y;
-                    if (0 < eX && Mathf.abs(eY) <= eX && eX < cEX)
+                    if (((0 < eX && Mathf.abs(eY) <= eX) || h == previousTarget) && eX < cEX)
                     {
                         target = h;
                         cDistX = distX;
@@ -50,6 +53,10 @@ public class Ghost : HealthEntity
                     }
                 }
             }
+        }
+        
+        if () 
+        {
         }
         
         switch (Mathf.Floor(Random.value * 4))
