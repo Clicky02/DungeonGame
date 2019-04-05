@@ -29,6 +29,8 @@ public class Control : MonoBehaviour
 
     public int[] nextMovement = null;
     bool swiped = false;
+    List<int> inelligbleTouches = new List<int>();
+    int activeTouch = -999; //Touch is nonnullable, and this seems to be the obvious way around it
 
     private void Awake()
     {
@@ -90,14 +92,31 @@ public class Control : MonoBehaviour
 
 
 #else
-        if (Input.touchCount > 0)
+
+        Touch[] myTouches = Input.touches;
+        for (int i = 0; i < Input.touchCount; i++)
         {
-            Touch t = Input.touches[0];
+            Touch t = myTouches[i];
             if (t.phase == TouchPhase.Began)
             {
-                tOrigin = t.position;
+                if (t.position.x > (Screen.width - 300) && t.position.y  < 300)
+                {
+                    inelligbleTouches.Add(t.fingerId);
+                }
+                else if (activeTouch == -999)
+                {
+                    tOrigin = t.position;
+                    activeTouch = t.fingerId;
+                }
             }
-            else
+            else if (inelligbleTouches.Contains(t.fingerId))
+            {
+                if (t.phase == TouchPhase.Ended)
+                {
+                    inelligbleTouches.Remove(t.fingerId);
+                }
+            }
+            else if (t.fingerId == activeTouch)
             {
                 Vector2 tEnd = t.position;
                 float tx = tEnd.x - tOrigin.x;
@@ -105,17 +124,18 @@ public class Control : MonoBehaviour
                 float ax = Mathf.Abs(tx);
                 float ay = Mathf.Abs(ty);
 
-                
+
 
                 if (t.phase == TouchPhase.Ended && tOrigin.x >= 0)
                 {
                     tOrigin.x = -1;
+                    activeTouch = -999;
 
 
                     if (ax < 18 && ay < 18)
                     {
-                        x = (int) player.direction.x;
-                        y = (int) player.direction.y;
+                        x = (int)player.direction.x;
+                        y = (int)player.direction.y;
                     }
                     else
                     {
@@ -129,7 +149,7 @@ public class Control : MonoBehaviour
                         }
                     }
                     if (player.movement != null && (x != 0 || y != 0))
-                    { 
+                    {
                         if (!swiped) nextMovement = new int[2] { x, y };
                         x = 0;
                         y = 0;
@@ -151,6 +171,8 @@ public class Control : MonoBehaviour
 
             }
         }
+        
+
 
 
         if (player.movement == null && nextMovement != null && (x == 0 && y == 0))
