@@ -75,18 +75,32 @@ public class Ghost : HealthEntity
                 {
                     case 0:
                         Vector3 v0 = (new Vector3(b ? cDistX : 0, b ? 0 : cDistY, 0).normalized);
-                        if (Control.c.IsTile(tilePos + Vector3Int.RoundToInt(v0)))
+                        Vector3Int loc0 = tilePos + Vector3Int.RoundToInt(v0);
+                        if (Control.c.IsTile(loc0))
                         {
-                            Move(v0);
-                            i = 4;
+                            HealthEntity h0 = Control.c.GetEntity(loc0) as HealthEntity;
+                            if (h0 == null || (h0 != null && h0.team != team))
+                            {
+                                Move(v0);
+                                i = 4;
+                            }
                         }
                         break;
                     case 1:
                         Vector3 v1 = (new Vector3(b ? 0 : cDistX, b ? cDistY : 0, 0).normalized);
-                        if (Control.c.IsTile(tilePos + Vector3Int.RoundToInt(v1)))
+                        Vector3Int loc1 = tilePos + Vector3Int.RoundToInt(v1);
+                        if (Control.c.IsTile(loc1))
                         {
-                            Move(v1);
-                            i = 4;
+                            HealthEntity h1 = Control.c.GetEntity(loc1) as HealthEntity;
+                            if (h1 == null || (h1 != null && h1.team != team))
+                            {
+                                Move(v1);
+                                i = 4;
+                            }
+                            else if (h1 != null)
+                            {
+                                i = 4;
+                            }
                         }
                         break;
                     case 2:
