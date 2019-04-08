@@ -20,9 +20,14 @@ public class Ghost : HealthEntity
         rightAnimationHash = Animator.StringToHash("GhostRight");
         upAnimationHash = Animator.StringToHash("GhostBack");
         downAnimationHash = Animator.StringToHash("GhostFront");
-        actionSpeed = 0.25f;
+        actionSpeed = 0.2f;
         actionTime = 1;
         baseColor = GetComponent<SpriteRenderer>().color;
+
+        int tileX = Mathf.RoundToInt(transform.localPosition.x - 0.4f);
+        int tileY = Mathf.RoundToInt(transform.localPosition.y - 0.4f);
+
+        tilePos = new Vector3Int(tileX, tileY, tileY);
     }
 
     public override void Act()

@@ -16,7 +16,7 @@ public class MenuController : MonoBehaviour
 
     void StartGame()
     {
-        SceneManager.LoadScene("Template");
+        SceneManager.LoadScene("Level1-0");
     }
 
     void OpenEquipmentMenu()

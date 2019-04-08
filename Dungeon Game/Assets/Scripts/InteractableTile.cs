@@ -11,7 +11,7 @@ public class InteractableTile : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
-        tileX = Mathf.RoundToInt(transform.localPosition.x);
+        tileX = Mathf.RoundToInt(transform.localPosition.x - 0.4f);
         tileY = Mathf.RoundToInt(transform.localPosition.y - 0.4f);
         Control.c.interactableTiles.Add(new Vector3Int(tileX, tileY, 0), this);
     }

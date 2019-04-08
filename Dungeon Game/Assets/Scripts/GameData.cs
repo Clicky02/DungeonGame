@@ -41,6 +41,7 @@ public class GameData : MonoBehaviour
         else if (data != this)
         {
             Destroy(gameObject);
+            //
         }
     }
 
@@ -122,6 +123,7 @@ public class GameData : MonoBehaviour
             PlayerData data = (PlayerData)bf.Deserialize(file);
             file.Close();
             ResetInventory();
+            Debug.Log(data.level);
             if (data.level != null)
             level = data.level;
             if (data.experience != null)
@@ -144,7 +146,7 @@ public class GameData : MonoBehaviour
             if (data.boots != null)
             boots = data.boots;
             if (data.weapon != null)
-            weapon = data.weapon
+                weapon = data.weapon;
             
             if (data.inventory != null)
             inventory = data.inventory;
@@ -185,7 +187,7 @@ public class GameData : MonoBehaviour
             if (data.boots != null)
             boots = data.boots;
             if (data.weapon != null)
-            weapon = data.weapon
+                weapon = data.weapon;
             
             if (data.inventory != null)
             inventory = data.inventory;

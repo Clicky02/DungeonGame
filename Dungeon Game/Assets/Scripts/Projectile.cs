@@ -32,7 +32,7 @@ public class Projectile : Entity
         movement = new Movement(Vector3.up, speed*2*range, (float)range, this);
         x = (int)direction.normalized.x;
         y = (int)direction.normalized.y;
-        c.AddProjectile(tilePos, this);
+        Control.c.AddProjectile(tilePos, this);
         rb = GetComponent<Rigidbody2D>();
         baseColor = sr.color;
     }

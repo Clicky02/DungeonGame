@@ -58,6 +58,11 @@ public class HealthEntity : Entity
             actionSpeed = 10F;
         }
         baseColor = GetComponent<SpriteRenderer>().color;
+
+        int tileX = Mathf.RoundToInt(transform.localPosition.x - 0.4f);
+        int tileY = Mathf.RoundToInt(transform.localPosition.y - 0.4f);
+
+        tilePos = new Vector3Int(tileX, tileY, tileY);
     }
 
     // Update is called once per frame

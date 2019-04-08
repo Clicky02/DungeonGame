@@ -32,6 +32,19 @@ public class Player : HealthEntity
         team = -1;
         PullStats();
         DontDestroyOnLoad(gameObject);
+
+        sr = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+
+        rb = GetComponent<Rigidbody2D>();
+
+        leftAnimationHash = Animator.StringToHash("WizardLeft");
+        rightAnimationHash = Animator.StringToHash("WizardRight");
+        upAnimationHash = Animator.StringToHash("WizardBack");
+        downAnimationHash = Animator.StringToHash("WizardFront");
+
+        baseColor = GetComponent<SpriteRenderer>().color;
+
         if (LevelData.data.p  == null) {
             Debug.Log(1); 
             mana = maxMana;
@@ -56,17 +69,7 @@ public class Player : HealthEntity
             mBRMaxWidth = mBR.sizeDelta.x;
             mBR.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, mBRMaxWidth * (float)(mana / maxMana));
 
-            sr = GetComponent<SpriteRenderer>();
-            anim = GetComponent<Animator>();
 
-            rb = GetComponent<Rigidbody2D>();
-
-            leftAnimationHash = Animator.StringToHash("WizardLeft");
-            rightAnimationHash = Animator.StringToHash("WizardRight");
-            upAnimationHash = Animator.StringToHash("WizardBack");
-            downAnimationHash = Animator.StringToHash("WizardFront");
-
-            baseColor = GetComponent<SpriteRenderer>().color;
 
             LoadAbilities();
     }
@@ -182,6 +185,7 @@ public class Player : HealthEntity
 
     public override void Attack(HealthEntity e, Vector3 dir)
     {
+        Debug.Log("");
         float d = damage;
         new DamageEvent(e, this, d, "melee", false).Invoke();
         movement = new Movement("attack", dir, 0.1f, this);
