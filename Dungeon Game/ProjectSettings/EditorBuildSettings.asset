@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Equipment Menu.unity
     guid: 4db3f29402e630d44b3fedc23ef9fa26
+  - enabled: 1
+    path: Assets/Scenes/Level1-0.unity
+    guid: 8b7740627ffa18f49928319bd6be79f9
+  - enabled: 1
+    path: Assets/Scenes/TestDungeon.unity
+    guid: 296e970de8f88a842bd69cf3a6c0fc66
+  - enabled: 1
+    path: Assets/Scenes/Level1-1.unity
+    guid: 1f1fcfe483e294149b7c13346ed2735a
   m_configObjects: {}

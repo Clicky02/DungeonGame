@@ -7,12 +7,11 @@ public class Stairs : InteractableTile
 {
 
     public string sceneName;
-
+    public Vector3Int spawnOffset;
    
     public override void Interact(MoveEvent e)
     {
-        Debug.Log("hi");
-        if (e.e is Player) SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        if (e.e is Player) LevelData.data.ChangeScene(sceneName, spawnOffset);
         else e.Cancel();
     }
 }

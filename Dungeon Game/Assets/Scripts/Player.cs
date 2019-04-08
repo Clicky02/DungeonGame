@@ -37,10 +37,7 @@ public class Player : HealthEntity
             mana = maxMana;
             health = maxHealth;  
         } else {
-            Debug.Log(2);
-            mana = LevelData.data.p.mana;
-            health = LevelData.data.p.health;
-            Destroy(LevelData.data.p.gameObject);
+            LevelData.data.SetNewPlayer(this);
         }
         LevelData.data.p = this;
             

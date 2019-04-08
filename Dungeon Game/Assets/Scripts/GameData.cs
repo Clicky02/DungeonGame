@@ -32,7 +32,6 @@ public class GameData : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-
         if (data == null)
         {
             data = this;
