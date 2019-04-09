@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7511723729503036705}
   - component: {fileID: 7511723729503036704}
-  - component: {fileID: 3990635717390715850}
   - component: {fileID: 4730830186626645802}
   - component: {fileID: 3440035723743437743}
+  - component: {fileID: 1858965614338432025}
   m_Layer: 0
   m_Name: MagicBolt
   m_TagString: Untagged
@@ -82,28 +82,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3990635717390715850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7511723729503036767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32356f4e4b2189e4699650d50dadd269, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  c: {fileID: 0}
-  tilePos: {x: 0, y: 0, z: 0}
-  rb: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  direction: {x: 0, y: 1, z: 0}
-  speed: 0.04
-  damage: 5
-  crit: 0
-  range: 10
-  caster: {fileID: 0}
 --- !u!50 &4730830186626645802
 Rigidbody2D:
   serializedVersion: 4
@@ -151,3 +129,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.45}
   m_EdgeRadius: 0
+--- !u!114 &1858965614338432025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7511723729503036767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c55e6bea3987c4c8907e231523d7c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  c: {fileID: 0}
+  tilePos: {x: 0, y: 0, z: 0}
+  rb: {fileID: 0}
+  team: 0
+  baseColor: {r: 0, g: 0, b: 0, a: 0}
+  direction: {x: 0, y: 1, z: 0}
+  speed: 0.03
+  damage: 1
+  crit: 0
+  range: 10
+  caster: {fileID: 0}

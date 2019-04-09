@@ -58,7 +58,7 @@ public class MagicBolt : Ability
         damage = 1f;
         imageName = "magicBolt";
         type = "basic";
-        cooldown = 1f;
+        cooldown = 1.8f;
     }
 
     public override void Instantiate(Player player)

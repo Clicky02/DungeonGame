@@ -44,6 +44,16 @@ public class Movement : StateChange
 
     }
 
+    public Movement(Vector3 tilePos, float dur, Entity entity)
+    {
+        e = entity;
+        duration = dur;
+        currentDir = tilePos - entity.transform.position;
+        currentMovement = Vector3.Distance(tilePos, entity.transform.position);
+        currentMovementLeft = currentMovement;
+
+    }
+
     public bool Tick2(float delta)
     {
 

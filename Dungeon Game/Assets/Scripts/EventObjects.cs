@@ -110,6 +110,15 @@ public class MoveEvent : EventObject
         rotation = dir;
     }
 
+    public MoveEvent(HealthEntity e, Vector3 dir, Vector3 rot)
+    {
+        this.e = e;
+        this.x = (int)dir.x;
+        this.y = (int)dir.y;
+        rotation = rot;
+    }
+
+
     public override void Cancel()
     {
         canceled = true;
@@ -121,19 +130,19 @@ public class MoveEvent : EventObject
         if (!e.frozen)
         {
             e.direction = rotation;
-            if (x >= 1)
+            if (rotation.x >= 1)
             {
                 e.anim.Play(e.rightAnimationHash);
             }
-            else if (x <= -1)
+            else if (rotation.x <= -1)
             {
                 e.anim.Play(e.leftAnimationHash);
             }
-            else if (y >= 1)
+            else if (rotation.y >= 1)
             {
                 e.anim.Play(e.upAnimationHash);
             }
-            else if (y <= -1)
+            else if (rotation.y <= -1)
             {
                 e.anim.Play(e.downAnimationHash);
             }
@@ -146,7 +155,7 @@ public class MoveEvent : EventObject
                 {
                     Control.c.RemoveEntity(e.tilePos);
                     Control.c.SetEntity(newTilePos, e);
-                    e.movement = new Movement("walk", new Vector3(x, y), duration, e);
+                    e.movement = new Movement(newTilePos, duration, e);
                     e.tilePos = newTilePos;
                     InteractableTile t = Control.c.GetTrap(newTilePos);
                     if (t != null) t.Interact(this);

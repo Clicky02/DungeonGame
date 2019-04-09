@@ -53,7 +53,7 @@ public class Projectile : Entity
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         Entity e = collision.gameObject.GetComponent(typeof(Entity)) as Entity;
         if (e != null)
@@ -75,3 +75,6 @@ public class Projectile : Entity
         }
     }
 }
+
+
+

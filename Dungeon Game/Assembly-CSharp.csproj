@@ -65,6 +65,7 @@
     <Compile Include="Assets\Dungeon Game\Tiles\StandableTile.cs" />
     <Compile Include="Assets\Scripts\Ability.cs" />
     <Compile Include="Assets\Scripts\Armour.cs" />
+    <Compile Include="Assets\Scripts\BoltProjectile.cs" />
     <Compile Include="Assets\Scripts\Boots.cs" />
     <Compile Include="Assets\Scripts\Chestplates.cs" />
     <Compile Include="Assets\Scripts\ColorChange.cs" />
