@@ -83,7 +83,7 @@ public class AttackEvent : EventObject
         
         if (doesHit)
         {
-            numCrits = GameData.data.DoesSucceed(critChance, pTarget || pAttacker, pTarget);
+            numCrits += GetCrit(critChance);
             attack *= Mathf.Pow(critMultiplier, numCrits);
         }
         else
@@ -142,6 +142,34 @@ public class SpellHitEvent : EventObject
 
 public class TrapDamageEvent : EventObject
 {
+
+    public HealthEntity target;
+    public HealthEntity attacker;
+
+    //Attacker stats
+    public float damage;
+
+    //Target stats
+    public float defense;
+    public float evadeChance;
+    
+    public bool pTarget = false; //If target is the player
+    
+    public string cause = "attack";
+
+    public AttackEvent(HealthEntity target, Entity attacker, float damage)
+    {
+        this.target = target;
+        this.attacker = attacker;
+
+        this.damage = damage;
+
+        defense = target.defense;
+        evadeChance = target.evadeChance;
+
+        if (target is Player) pTarget = true;
+    }
+    
     public override void Cancel()
     {
         throw new System.NotImplementedException();
@@ -149,7 +177,19 @@ public class TrapDamageEvent : EventObject
 
     public override bool Invoke()
     {
-        throw new System.NotImplementedException();
+        bool doesHit = !GameData.data.DoesSucceed(evadeChance, pTarget);
+
+        attack -= defense;
+        
+        if (attack < 1) attack = 1;
+        
+        if (!doesHit)
+        {
+            attack = 0;
+        }
+        
+        new DamageEvent(target, attacker, damage, "trap", false).Invoke();
+        return true;
     }
 }
 
