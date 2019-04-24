@@ -76,24 +76,39 @@ public class AttackEvent : EventObject
     public override bool Invoke()
     {
         bool doesHit = GameData.data.DoesSucceed(accuracy, pAttacker) && !GameData.data.DoesSucceed(evadeChance, pTarget);
-        bool doesCrit = false;
+        int numCrits = 0;
 
         attack -= defense;
         if (attack < 1) attack = 1;
+        
         if (doesHit)
         {
-            doesCrit = GameData.data.DoesSucceed(critChance, pTarget || pAttacker, pTarget);
-            if (doesCrit)
-            {
-                attack *= critMultiplier;
-            }
+            numCrits = GameData.data.DoesSucceed(critChance, pTarget || pAttacker, pTarget);
+            attack *= Mathf.Pow(critMultiplier, numCrits);
         }
         else
         {
             attack = 0;
         }
-        new DamageEvent(target, attacker, attack, cause, doesCrit).Invoke();
+        new DamageEvent(target, attacker, attack, cause, numCrits).Invoke();
         return true;
+    }
+    
+    public int GetCrit(float critChance) 
+    {
+        int crits = 0;
+        
+        if (critChance > 1)
+        {
+            critChance -= 1;
+            crits += GetCrit(critChance);
+            return crits + 1;
+        }
+        
+        if (GameData.data.DoesSucceed(critChance, pTarget || pAttacker, pTarget))
+            return 1;
+        else
+            return 0;
     }
 }
 
@@ -148,15 +163,15 @@ public class DamageEvent : EventObject
     public Entity damager;
     public float damage;
     public string method;
-    public bool crit;
+    public float numCrits;
 
-    public DamageEvent(HealthEntity target, Entity damager, float damage, string method, bool crit)
+    public DamageEvent(HealthEntity target, Entity damager, float damage, string method, float numCrits)
     {
         this.target = target;
         this.damager = damager;
         this.damage = damage;
         this.method = method;
-        this.crit = crit;
+        this.numCrits = numCrits;
     }
 
     public override void Cancel()
@@ -180,7 +195,7 @@ public class DamageEvent : EventObject
                 GameData.data.AddExperience(target.deathExperience);
             }
         }
-        target.CreateDamageNumber(damage, crit);
+        target.CreateDamageNumber(damage, numCrits);
         return true;
 
     }
