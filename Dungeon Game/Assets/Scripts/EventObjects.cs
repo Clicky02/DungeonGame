@@ -157,7 +157,7 @@ public class TrapDamageEvent : EventObject
     
     public string cause = "attack";
 
-    public AttackEvent(HealthEntity target, Entity attacker, float damage)
+    public TrapDamageEvent(HealthEntity target, Entity attacker, float damage)
     {
         this.target = target;
         this.attacker = attacker;
