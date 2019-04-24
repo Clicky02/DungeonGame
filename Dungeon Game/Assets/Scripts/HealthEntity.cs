@@ -145,13 +145,17 @@ public class HealthEntity : Entity
         return false;
     }
 
-    public virtual void CreateDamageNumber(float damage, bool crit)
+    public virtual void CreateDamageNumber(float damage, int numCrits)
     {
         GameObject g = Instantiate(ResourceHolder.r.damageNumber, this.transform);
         g.transform.SetParent(transform.parent);
         DamageNumber dn = g.GetComponent<DamageNumber>();
         dn.damage = Mathf.RoundToInt(damage);
-        if (crit) dn.c = new Color(255, 215, 0);
+        if (numCrits == 1) dn.c = new Color(255, 215, 0);
+        else if (numCrits == 2) dn.c = new Color(255, 195, 0);
+        else if (numCrits == 3) dn.c = new Color(255, 165, 0);
+        else if (numCrits == 4) dn.c = new Color(255, 135, 0);
+        else if (numCrits >= 5) dn.c = new Color(255, 65, 0);
     }
 
     public virtual void Kill()
