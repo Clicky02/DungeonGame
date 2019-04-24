@@ -46,7 +46,7 @@ public class Vengeance : Perk
         {
             cooldown = Time.time + 4;
             e.damage *= 1.5f;
-            e.crit = true;
+            e.numCrits += 1;
         }
     }
 
@@ -79,7 +79,7 @@ public class Fierce : Perk
         if (Mathf.Floor(Random.value * 3) < 1)
         {
             e.damage *= 1.26f;
-            e.crit = true;
+            e.numCrits += 1;
         }
     }
 
