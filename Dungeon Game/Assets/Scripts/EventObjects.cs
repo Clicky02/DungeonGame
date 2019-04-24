@@ -28,6 +28,8 @@ public class AttackEvent : EventObject
 
     public bool pAttacker = false; //If attacker is the player
     public bool pTarget = false; //If target is the player
+    
+    public string cause = "attack";
 
 
     public AttackEvent(HealthEntity target, HealthEntity attacker)
@@ -45,6 +47,25 @@ public class AttackEvent : EventObject
 
         if (target is Player) pTarget = true;
         if (attacker is Player) pAttacker = true;
+    }
+    
+    public AttackEvent(HealthEntity target, HealthEntity attacker, float damage, string cause)
+    {
+        this.target = target;
+        this.attacker = attacker;
+
+        attack = damage;
+        accuracy = attacker.accuracy;
+        critChance = attacker.critChance;
+        critMultiplier = attacker.critMultiplier;
+
+        defense = target.defense;
+        evadeChance = target.evadeChance;
+
+        if (target is Player) pTarget = true;
+        if (attacker is Player) pAttacker = true;
+        
+        this.cause = cause;
     }
 
     public override void Cancel()
@@ -71,7 +92,7 @@ public class AttackEvent : EventObject
         {
             attack = 0;
         }
-        new DamageEvent(target, attacker, attack, "attack", doesCrit).Invoke();
+        new DamageEvent(target, attacker, attack, cause, doesCrit).Invoke();
         return true;
     }
 }
@@ -80,36 +101,14 @@ public class SpellHitEvent : EventObject
 {
     public HealthEntity target;
     public HealthEntity attacker;
-
-    //Attacker stats
-    public float attack;
-    public float accuracy;
-    public float critChance;
-    public float critMultiplier;
-
-    //Target stats
-    public float defense;
-    public float evadeChance;
-
-    public bool pAttacker = false; //If attacker is the player
-    public bool pTarget = false; //If target is the player
+    public float damage;
 
 
     public SpellHitEvent(HealthEntity target, HealthEntity attacker, float damage)
     {
         this.target = target;
         this.attacker = attacker;
-
-        attack = damage;
-        accuracy = attacker.accuracy;
-        critChance = attacker.critChance;
-        critMultiplier = attacker.critMultiplier;
-
-        defense = target.defense;
-        evadeChance = target.evadeChance;
-
-        if (target is Player) pTarget = true;
-        if (attacker is Player) pAttacker = true;
+        this.damage = damage;
     }
 
     public override void Cancel()
@@ -119,25 +118,7 @@ public class SpellHitEvent : EventObject
 
     public override bool Invoke()
     {
-        bool doesHit = GameData.data.DoesSucceed(accuracy, pAttacker) && !GameData.data.DoesSucceed(evadeChance, pTarget);
-        bool doesCrit = false;
-        Debug.Log(critChance);
-        attack -= defense;
-        if (attack < 1) attack = 1;
-        if (doesHit)
-        {
-            Debug.Log(critChance);
-            doesCrit = GameData.data.DoesSucceed(critChance, pTarget || pAttacker, pTarget);
-            if (doesCrit)
-            {
-                attack *= critMultiplier;
-            }
-        }
-        else
-        {
-            attack = 0;
-        }
-        new DamageEvent(target, attacker, attack, "spell", doesCrit).Invoke();
+        new AttackEvent(target, attacker, damage, "spell").Invoke();
         return true;
     }
 }
