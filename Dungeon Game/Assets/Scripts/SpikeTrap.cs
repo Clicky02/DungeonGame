@@ -47,7 +47,7 @@ public class SpikeTrap : MonoBehaviour
                 HealthEntity e = res.c.GetEntity(new Vector3Int(tileX, tileY, 0)) as HealthEntity;
                 if (e != null && e != damaged)
                 {
-                    new DamageEvent(e, null, 4.0f, "trap", false).Invoke();
+                    new TrapDamageEvent(e, null, 4.0f).Invoke();
                     damaged = e;
                 }
             }
@@ -58,7 +58,7 @@ public class SpikeTrap : MonoBehaviour
             HealthEntity e = res.c.GetEntity(new Vector3Int(tileX, tileY, 0)) as HealthEntity;
             if (e != null && e != damaged)
             {
-                new DamageEvent(e, null, 4.0f, "trap", false).Invoke();
+                new TrapDamageEvent(e, null, 4.0f).Invoke();
                 damaged = e;
             }
         }
