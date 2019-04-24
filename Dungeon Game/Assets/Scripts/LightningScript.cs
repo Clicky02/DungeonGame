@@ -49,7 +49,7 @@ public class LightningScript : MonoBehaviour
             {
                 if (e is HealthEntity)
                 {
-                    new DamageEvent(e as HealthEntity, caster, damage, "projectile", crit).Invoke();
+                    new SpellHitEvent(e as HealthEntity, caster, damage).Invoke();
                 }
 
             }
@@ -58,7 +58,7 @@ public class LightningScript : MonoBehaviour
             {
                 if (e is HealthEntity)
                 {
-                    new DamageEvent(e as HealthEntity, caster, damage, "projectile", crit).Invoke();
+                    new SpellHitEvent(e as HealthEntity, caster, damage).Invoke();
                 }
 
             }

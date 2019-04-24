@@ -23,8 +23,6 @@ public class Player : HealthEntity
 
     protected List<Perk> perks = new List<Perk>();
 
-    public float physicalDamage = 0;
-    public float magicDamage = 0;
 
 
     public override void Start()
@@ -46,7 +44,6 @@ public class Player : HealthEntity
         baseColor = GetComponent<SpriteRenderer>().color;
 
         if (LevelData.data.p  == null) {
-            Debug.Log(1); 
             mana = maxMana;
             health = maxHealth;  
         } else {
@@ -86,10 +83,17 @@ public class Player : HealthEntity
     {
         GameData data = GameData.data;
 
-        maxHealth = data.baseHealth;
-        maxMana = data.baseMana;
-        physicalDamage = data.weapon.physicalAttack;
-        magicDamage = data.weapon.magicAttack;
+        maxHealth = data.GetHealth();
+        maxMana = data.GetMana();
+
+        attack = data.GetAttack();
+        attack += data.weapon.physicalAttack;
+
+        defense = data.GetDefense();
+        accuracy = data.GetAccuracy();
+        critChance = data.GetCritChance();
+        critMultiplier = data.GetCritMultiplier();
+        evadeChance = data.GetEvadeChance();
 
         List<Armour> equippedArmour = data.GetArmourList();
         foreach (Armour a in equippedArmour)
@@ -185,9 +189,8 @@ public class Player : HealthEntity
 
     public override void Attack(HealthEntity e, Vector3 dir)
     {
-        Debug.Log("");
-        float d = damage;
-        new DamageEvent(e, this, d, "melee", false).Invoke();
+        float d = attack;
+        new AttackEvent(e, this).Invoke();
         movement = new Movement("attack", dir, 0.1f, this);
     }
 

@@ -128,3 +128,43 @@ public class Lightning : Ability
 
     }
 }
+
+public class EnergyWave : Ability
+{
+
+    private GameObject lightning;
+
+    public EnergyWave()
+    {
+        name = "Energy Wave";
+        description = "Shock enemies at a close proximity.";
+        lore = "Warning: This spell will make you feel like a sith lord.";
+        manaCost = 8;
+        damage = 0.85f;
+        imageName = "lightning";
+        cooldown = 1f;
+    }
+
+    public override void Instantiate(Player player)
+    {
+        lightning = Resources.Load("Lightning", typeof(GameObject)) as GameObject;
+        p = player;
+    }
+
+    // Start is called before the first frame update
+    public override bool Cast(float damage, float manaCost, bool crit)
+    {
+        bool cast = p.UseMana(manaCost);
+        if (cast)
+        {
+            LightningScript f = GameObject.Instantiate(lightning).GetComponent<LightningScript>();
+            f.caster = p;
+            f.direction = p.direction;
+            f.crit = crit;
+            f.damage = damage;
+            p.SetCooldown(abilityNumber, cooldown);
+        }
+        return cast;
+
+    }
+}

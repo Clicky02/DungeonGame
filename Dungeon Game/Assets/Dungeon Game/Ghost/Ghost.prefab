@@ -117,16 +117,21 @@ MonoBehaviour:
   c: {fileID: 0}
   tilePos: {x: 7, y: 1, z: 0}
   rb: {fileID: 0}
+  team: 0
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   mana: 0
   manaRegen: 0
   health: 20
   damage: 3
+  deathExperience: 30
   defense: 0
   level: 0
   frozen: 0
   actionSpeed: -1
   direction: {x: 0, y: -1, z: 0}
+  sightRange: 5
+  followRange: 7
+  previousTarget: {fileID: 0}
 --- !u!61 &3389402544515401942
 BoxCollider2D:
   m_ObjectHideFlags: 0

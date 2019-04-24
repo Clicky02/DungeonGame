@@ -47,8 +47,6 @@ public class LevelData : MonoBehaviour
 
     public void SetNewPlayer(Player np)
     {
-        Debug.Log(currentOffset);
-        
         np.mana = p.mana;
         np.health = p.health;
         np.Rotate(p.direction);

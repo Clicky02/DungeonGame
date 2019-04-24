@@ -207,12 +207,12 @@ PrefabInstance:
         type: 3}
       propertyPath: manaBar
       value: 
-      objectReference: {fileID: 1210759936}
+      objectReference: {fileID: 976330003}
     - target: {fileID: 7135470200235910063, guid: 3fdd4dad117ac644fa2985bc6ddb37e5,
         type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 1351604374}
+      objectReference: {fileID: 976330002}
     - target: {fileID: 7135470200235910063, guid: 3fdd4dad117ac644fa2985bc6ddb37e5,
         type: 3}
       propertyPath: buttons.Array.data[0]
@@ -2351,6 +2351,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6273727270605785181, guid: 30e318feeb4f6db4d847649660b2bfda,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 46d68e7cbca8e584eabef73d3a74073f,
+        type: 3}
     - target: {fileID: 3850520489881036621, guid: 30e318feeb4f6db4d847649660b2bfda,
         type: 3}
       propertyPath: sceneName
@@ -2361,12 +2367,6 @@ PrefabInstance:
       propertyPath: spawnOffset.x
       value: -1
       objectReference: {fileID: 0}
-    - target: {fileID: 6273727270605785181, guid: 30e318feeb4f6db4d847649660b2bfda,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 46d68e7cbca8e584eabef73d3a74073f,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30e318feeb4f6db4d847649660b2bfda, type: 3}
 --- !u!224 &851542383 stripped
@@ -7754,8 +7754,30 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2058581517}
+    - target: {fileID: 3235619843263339297, guid: 46f143de6dd376e4a8622c5fabcef2ff,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8197782480612952205, guid: 46f143de6dd376e4a8622c5fabcef2ff,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46f143de6dd376e4a8622c5fabcef2ff, type: 3}
+--- !u!1 &976330002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7040595281988412085, guid: 46f143de6dd376e4a8622c5fabcef2ff,
+    type: 3}
+  m_PrefabInstance: {fileID: 976330001}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &976330003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8708377443090004159, guid: 46f143de6dd376e4a8622c5fabcef2ff,
+    type: 3}
+  m_PrefabInstance: {fileID: 976330001}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &989406071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8044,12 +8066,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1148298895}
   m_CullTransparentMesh: 0
---- !u!1 &1210759936 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7884656067100529872, guid: 46f143de6dd376e4a8622c5fabcef2ff,
-    type: 3}
-  m_PrefabInstance: {fileID: 976330001}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1287015423
 GameObject:
   m_ObjectHideFlags: 0
@@ -13745,12 +13761,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335980853}
   m_CullTransparentMesh: 0
---- !u!1 &1351604374 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3412423464003907734, guid: 46f143de6dd376e4a8622c5fabcef2ff,
-    type: 3}
-  m_PrefabInstance: {fileID: 976330001}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1496825264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13818,17 +13828,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3850520489881036621, guid: 30e318feeb4f6db4d847649660b2bfda,
-        type: 3}
-      propertyPath: sceneName
-      value: Level1-1
-      objectReference: {fileID: 0}
     - target: {fileID: 6273727270605785181, guid: 30e318feeb4f6db4d847649660b2bfda,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 46d68e7cbca8e584eabef73d3a74073f,
         type: 3}
+    - target: {fileID: 3850520489881036621, guid: 30e318feeb4f6db4d847649660b2bfda,
+        type: 3}
+      propertyPath: sceneName
+      value: Level1-1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30e318feeb4f6db4d847649660b2bfda, type: 3}
 --- !u!1 &1648341450

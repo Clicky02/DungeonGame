@@ -11,12 +11,160 @@ public abstract class EventObject
 
 }
 
+public class AttackEvent : EventObject
+{
+    public HealthEntity target;
+    public HealthEntity attacker;
+
+    //Attacker stats
+    public float attack;
+    public float accuracy;
+    public float critChance;
+    public float critMultiplier;
+
+    //Target stats
+    public float defense;
+    public float evadeChance;
+
+    public bool pAttacker = false; //If attacker is the player
+    public bool pTarget = false; //If target is the player
+
+
+    public AttackEvent(HealthEntity target, HealthEntity attacker)
+    {
+        this.target = target;
+        this.attacker = attacker;
+
+        attack = attacker.attack;
+        accuracy = attacker.accuracy;
+        critChance = attacker.critChance;
+        critMultiplier = attacker.critMultiplier;
+
+        defense = target.defense;
+        evadeChance = target.evadeChance;
+
+        if (target is Player) pTarget = true;
+        if (attacker is Player) pAttacker = true;
+    }
+
+    public override void Cancel()
+    {
+        
+    }
+
+    public override bool Invoke()
+    {
+        bool doesHit = GameData.data.DoesSucceed(accuracy, pAttacker) && !GameData.data.DoesSucceed(evadeChance, pTarget);
+        bool doesCrit = false;
+
+        attack -= defense;
+        if (attack < 1) attack = 1;
+        if (doesHit)
+        {
+            doesCrit = GameData.data.DoesSucceed(critChance, pTarget || pAttacker, pTarget);
+            if (doesCrit)
+            {
+                attack *= critMultiplier;
+            }
+        }
+        else
+        {
+            attack = 0;
+        }
+        new DamageEvent(target, attacker, attack, "attack", doesCrit).Invoke();
+        return true;
+    }
+}
+
+public class SpellHitEvent : EventObject
+{
+    public HealthEntity target;
+    public HealthEntity attacker;
+
+    //Attacker stats
+    public float attack;
+    public float accuracy;
+    public float critChance;
+    public float critMultiplier;
+
+    //Target stats
+    public float defense;
+    public float evadeChance;
+
+    public bool pAttacker = false; //If attacker is the player
+    public bool pTarget = false; //If target is the player
+
+
+    public SpellHitEvent(HealthEntity target, HealthEntity attacker, float damage)
+    {
+        this.target = target;
+        this.attacker = attacker;
+
+        attack = damage;
+        accuracy = attacker.accuracy;
+        critChance = attacker.critChance;
+        critMultiplier = attacker.critMultiplier;
+
+        defense = target.defense;
+        evadeChance = target.evadeChance;
+
+        if (target is Player) pTarget = true;
+        if (attacker is Player) pAttacker = true;
+    }
+
+    public override void Cancel()
+    {
+
+    }
+
+    public override bool Invoke()
+    {
+        bool doesHit = GameData.data.DoesSucceed(accuracy, pAttacker) && !GameData.data.DoesSucceed(evadeChance, pTarget);
+        bool doesCrit = false;
+        Debug.Log(critChance);
+        attack -= defense;
+        if (attack < 1) attack = 1;
+        if (doesHit)
+        {
+            Debug.Log(critChance);
+            doesCrit = GameData.data.DoesSucceed(critChance, pTarget || pAttacker, pTarget);
+            if (doesCrit)
+            {
+                attack *= critMultiplier;
+            }
+        }
+        else
+        {
+            attack = 0;
+        }
+        new DamageEvent(target, attacker, attack, "spell", doesCrit).Invoke();
+        return true;
+    }
+}
+
+
+
+public class TrapDamageEvent : EventObject
+{
+    public override void Cancel()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override bool Invoke()
+    {
+        throw new System.NotImplementedException();
+    }
+}
+
+
+
+
 
 public class DamageEvent : EventObject
 {
     public HealthEntity target;
     public Entity damager;
-    public float defense;
     public float damage;
     public string method;
     public bool crit;
@@ -25,7 +173,6 @@ public class DamageEvent : EventObject
     {
         this.target = target;
         this.damager = damager;
-        this.defense = target.defense;
         this.damage = damage;
         this.method = method;
         this.crit = crit;
@@ -39,22 +186,20 @@ public class DamageEvent : EventObject
     public override bool Invoke()
     {
         if (damager is HealthEntity)
-        {
             (damager as HealthEntity).InvokeDamageDealt(this);
-        }
 
         target.InvokeDamageTaken(this);
 
-        float d = damage - defense;
-        if (d < 1)
+
+
+        if (target.Damage(damage))
         {
-            d = 1;
+            if (damager == LevelData.data.p)
+            {
+                GameData.data.AddExperience(target.deathExperience);
+            }
         }
-
-
-
-        target.Damage(d);
-        target.CreateDamageNumber(d, crit);
+        target.CreateDamageNumber(damage, crit);
         return true;
 
     }
@@ -76,7 +221,7 @@ public class AbilityCastEvent : EventObject
     {
         this.p = p;
         this.ability = p.abilities[ability];
-        this.damage = this.ability.damage * p.magicDamage;
+        this.damage = this.ability.damage * p.attack;
         this.manaCost = this.ability.manaCost;
         abilityNumber = ability;
     }

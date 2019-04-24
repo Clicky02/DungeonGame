@@ -11,4 +11,5 @@ public abstract class Item
     public string type = "consumable";
     public string name;
     public string lore;
+    public int levelRequirement = 0;
 }

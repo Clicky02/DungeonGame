@@ -46,7 +46,6 @@ public class Ghost : HealthEntity
                 int distY = h.tilePos.y - tilePos.y;
                 if ((Mathf.Abs(distX) <= sightRange && Mathf.Abs(distY) <= sightRange) ||  (h == previousTarget && (Mathf.Abs(distX) <= followRange && Mathf.Abs(distY) <= followRange)))
                 {
-                    Debug.Log(h == previousTarget);
                     int eX = distX*((int)direction.x) + distY*((int)direction.y);
                     int eY = distY* ((int)direction.x) + distX* ((int)direction.y);
                     if (((0 < eX && Mathf.Abs(eY) <= eX && Physics2D.Linecast(h.transform.position, transform.position).collider == null)) && eX < cEX)

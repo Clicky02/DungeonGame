@@ -6,14 +6,22 @@ using UnityEngine.Tilemaps;
 
 public class HealthEntity : Entity
 {
-    protected float maxHealth = 20;
+    protected float maxHealth = 100;
     protected float maxMana = 0;
     public float mana = 0;
     public float manaRegen = 0;
     public float health = 20;
-    public float damage = 3;
 
+    public float attack = 3;
     public float defense = 0;
+    public float accuracy = 1.0f;
+    public float critChance = 0;
+    public float critMultiplier = 1.0f;
+    public float evadeChance = 0.0f;
+
+    public int deathExperience = 0;
+
+    
     public int level = 0;
 
     public bool frozen = false;
@@ -117,7 +125,7 @@ public class HealthEntity : Entity
     public virtual void Attack(HealthEntity e, Vector3 dir)
     {
         movement = new Movement("attack", dir, 0.1f, this);
-        new DamageEvent(e, this, damage, "melee", false).Invoke();
+        new AttackEvent(e, this).Invoke();
     }
 
     public virtual bool Damage(float damage)
@@ -196,6 +204,7 @@ public class HealthEntity : Entity
         onDamageTaken?.Invoke(e);
     }
 
+    //Invokes Damage Dealt Event
     public void InvokeDamageDealt(DamageEvent e)
     {
         onDamageDealt?.Invoke(e);

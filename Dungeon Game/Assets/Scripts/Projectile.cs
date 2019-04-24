@@ -60,7 +60,7 @@ public class Projectile : Entity
         {
             if (e is HealthEntity && e != caster)
             {
-                new DamageEvent(e as HealthEntity, caster, damage, "projectile", crit).Invoke();
+                new SpellHitEvent(e as HealthEntity, caster, damage).Invoke();
                 Destroy(this.gameObject);
             }
             else if (e is Projectile)

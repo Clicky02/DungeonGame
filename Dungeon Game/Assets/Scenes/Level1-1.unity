@@ -265,17 +265,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3850520489881036621, guid: 30e318feeb4f6db4d847649660b2bfda,
-        type: 3}
-      propertyPath: sceneName
-      value: Level1-0
-      objectReference: {fileID: 0}
     - target: {fileID: 6273727270605785181, guid: 30e318feeb4f6db4d847649660b2bfda,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 6421c1f46d89853439fd19fedc3ca310,
         type: 3}
+    - target: {fileID: 3850520489881036621, guid: 30e318feeb4f6db4d847649660b2bfda,
+        type: 3}
+      propertyPath: sceneName
+      value: Level1-0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30e318feeb4f6db4d847649660b2bfda, type: 3}
 --- !u!1001 &172841172
@@ -4727,17 +4727,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3850520489881036621, guid: 30e318feeb4f6db4d847649660b2bfda,
-        type: 3}
-      propertyPath: sceneName
-      value: Level1-0
-      objectReference: {fileID: 0}
     - target: {fileID: 6273727270605785181, guid: 30e318feeb4f6db4d847649660b2bfda,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 6421c1f46d89853439fd19fedc3ca310,
         type: 3}
+    - target: {fileID: 3850520489881036621, guid: 30e318feeb4f6db4d847649660b2bfda,
+        type: 3}
+      propertyPath: sceneName
+      value: Level1-0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30e318feeb4f6db4d847649660b2bfda, type: 3}
 --- !u!1 &1247266655
@@ -5196,17 +5196,27 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 172841173}
+    - target: {fileID: 3235619843263339297, guid: 46f143de6dd376e4a8622c5fabcef2ff,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8197782480612952205, guid: 46f143de6dd376e4a8622c5fabcef2ff,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46f143de6dd376e4a8622c5fabcef2ff, type: 3}
 --- !u!1 &1326894770 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 3412423464003907734, guid: 46f143de6dd376e4a8622c5fabcef2ff,
+  m_CorrespondingSourceObject: {fileID: 7040595281988412085, guid: 46f143de6dd376e4a8622c5fabcef2ff,
     type: 3}
   m_PrefabInstance: {fileID: 1326894769}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1326894771 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 7884656067100529872, guid: 46f143de6dd376e4a8622c5fabcef2ff,
+  m_CorrespondingSourceObject: {fileID: 8708377443090004159, guid: 46f143de6dd376e4a8622c5fabcef2ff,
     type: 3}
   m_PrefabInstance: {fileID: 1326894769}
   m_PrefabAsset: {fileID: 0}
@@ -5352,17 +5362,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3850520489881036621, guid: 30e318feeb4f6db4d847649660b2bfda,
-        type: 3}
-      propertyPath: sceneName
-      value: Level1-0
-      objectReference: {fileID: 0}
     - target: {fileID: 6273727270605785181, guid: 30e318feeb4f6db4d847649660b2bfda,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 6421c1f46d89853439fd19fedc3ca310,
         type: 3}
+    - target: {fileID: 3850520489881036621, guid: 30e318feeb4f6db4d847649660b2bfda,
+        type: 3}
+      propertyPath: sceneName
+      value: Level1-0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30e318feeb4f6db4d847649660b2bfda, type: 3}
 --- !u!1 &1549606141
@@ -5506,17 +5516,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3850520489881036621, guid: 30e318feeb4f6db4d847649660b2bfda,
-        type: 3}
-      propertyPath: sceneName
-      value: Level1-0
-      objectReference: {fileID: 0}
     - target: {fileID: 6273727270605785181, guid: 30e318feeb4f6db4d847649660b2bfda,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 6421c1f46d89853439fd19fedc3ca310,
         type: 3}
+    - target: {fileID: 3850520489881036621, guid: 30e318feeb4f6db4d847649660b2bfda,
+        type: 3}
+      propertyPath: sceneName
+      value: Level1-0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30e318feeb4f6db4d847649660b2bfda, type: 3}
 --- !u!1 &1723753920

@@ -11,7 +11,7 @@ public class BoltProjectile : Projectile
         {
             if (e is HealthEntity && e != caster)
             {
-                new DamageEvent(e as HealthEntity, caster, damage, "projectile", crit).Invoke();
+                new SpellHitEvent(e as HealthEntity, caster, damage).Invoke();
                 new MoveEvent(e as HealthEntity, this.direction, (e as HealthEntity).direction).Invoke();
                 Destroy(this.gameObject);
             }

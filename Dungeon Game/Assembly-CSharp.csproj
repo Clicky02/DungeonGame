@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Armour.cs" />
     <Compile Include="Assets\Scripts\BoltProjectile.cs" />
     <Compile Include="Assets\Scripts\Boots.cs" />
+    <Compile Include="Assets\Scripts\CharacterCreationScript.cs" />
     <Compile Include="Assets\Scripts\Chestplates.cs" />
     <Compile Include="Assets\Scripts\ColorChange.cs" />
     <Compile Include="Assets\Scripts\Control.cs" />
@@ -85,14 +86,15 @@
     <Compile Include="Assets\Scripts\LightningScript.cs" />
     <Compile Include="Assets\Scripts\MenuController.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
+    <Compile Include="Assets\Scripts\PauseButton.cs" />
     <Compile Include="Assets\Scripts\Perk.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\PlayerMenuScript.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\ResourceHolder.cs" />
     <Compile Include="Assets\Scripts\SpikeTrap.cs" />
     <Compile Include="Assets\Scripts\Stairs.cs" />
     <Compile Include="Assets\Scripts\StateChange.cs" />
-    <Compile Include="Assets\Scripts\TestScript.cs" />
     <Compile Include="Assets\Scripts\UIAbilityScript.cs" />
     <Compile Include="Assets\Scripts\Wands.cs" />
     <Compile Include="Assets\Scripts\Weapon.cs" />
